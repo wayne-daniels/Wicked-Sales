@@ -1,0 +1,11 @@
+img {
+  object-fit: cover;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+div.header {
+  margin: 0 auto;
+}
