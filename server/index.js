@@ -27,6 +27,29 @@ app.get('/api/products', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/products/:id', (req, res, next) => {
+  if (req.params.id <= 0) {
+    return res.status(400).json({
+      error: `ProductId: ${req.params.id} is invalid.`
+    });
+  } else {
+    db.query(`
+   select *
+   from   "products"
+   where  "productId" = $1;
+    `, [req.params.id])
+      .then(result => {
+        if (!result.rows[0]) {
+          return res.status(404).json({
+            error: `ProductId: ${req.params.id} cannot be located.`
+          });
+        } else {
+          res.json(result.rows[0]);
+        }
+      }).catch(err => next(err));
+  }
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
