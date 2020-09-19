@@ -15,7 +15,8 @@ export default function Header(props) {
       </div>
       <div className="col-5 text-right px-0">
         <a className="text-white back mx-3">{`${props.cartItemCount} ${itemNumber}`}</a>
-        <i className="fas fa-shopping-cart fa-2x text-white"></i>
+        <i className="fas fa-shopping-cart fa-2x text-white"
+          style={{ cursor: 'pointer' }} onClick={() => props.setView('cart', {})}></i>
       </div>
     </header>
   );
