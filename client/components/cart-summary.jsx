@@ -36,11 +36,6 @@ export default function CartSummary(props) {
           <h5 className="text-muted d-flex align-items-center">
             Total Price: <span className="text-success">${((totalPrice) * 0.01).toFixed(2)}</span>
           </h5>
-          <div>
-            <button type="button" className="btn btn-success btn-lg" onClick={() => props.setView('checkout', {})}>
-              Checkout
-            </button>
-          </div>
         </div>
       </div>
     </div>
